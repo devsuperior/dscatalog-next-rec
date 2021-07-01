@@ -4,6 +4,8 @@ import Head from "next/head";
 import "../styles/custom.scss";
 import "../styles/globals.css";
 
+import { Navbar } from "../components";
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -19,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <title>DsCatalog NextJS</title>
       </Head>
+      <Navbar />
       <Component {...pageProps} />
     </>
   );
