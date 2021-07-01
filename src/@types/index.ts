@@ -6,3 +6,7 @@ export type NavLinkProps = {
 export type ButtonIconProps = {
   label: string;
 };
+
+export type ProductPriceProps = {
+  price: string;
+};

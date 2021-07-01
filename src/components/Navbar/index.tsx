@@ -32,7 +32,7 @@ export default function Navbar() {
               <NavbarLink label="HOME" target="/" />
             </li>
             <li>
-              <NavbarLink label="CATALOG" target="/catalog" />
+              <NavbarLink label="CATÁLOGO" target="/catalog" />
             </li>
             <li>
               <NavbarLink label="ADMIN" target="/admin" />
