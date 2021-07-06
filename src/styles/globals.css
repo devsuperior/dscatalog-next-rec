@@ -34,6 +34,8 @@ a {
 }
 
 .input-base {
+  width: 100%;
+  max-width: 450px;
   border: 1px solid #e1e1e1;
   box-sizing: border-box;
   border-radius: 10px;
@@ -42,6 +44,7 @@ a {
   letter-spacing: -0.015em;
   color: #263238;
   height: 50px;
+  margin-bottom: 30px;
 }
 
 .input-base:placeholder {
@@ -57,6 +60,10 @@ a {
   border-radius: 20px;
 }
 
-.margin-bottom-30 {
-  margin-bottom: 30px;
+.login-form-error {
+  color: red;
+  margin-top: -25px;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 0px 40px;
 }

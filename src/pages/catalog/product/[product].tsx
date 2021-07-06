@@ -6,8 +6,11 @@ import arrow from "../../../../public/blue_arrow.svg";
 import productImg from "../../../../public/product_big.png";
 
 import styles from "../../../styles/pages/product.module.css";
+import { Product } from "../../../@types";
+import { api } from "../../../utils/api";
+import { GetServerSidePropsContext } from "next";
 
-export default function ProductDetails() {
+export default function ProductDetails(props: Product) {
   return (
     <div className={styles.productDetailsContainer}>
       <div
@@ -25,33 +28,38 @@ export default function ProductDetails() {
               className={`text-center ${styles.productDetailsCard} ${styles.imgContainer}`}
             >
               <Image
-                src={productImg}
-                alt="Nome do produto"
+                src={props.imgUrl}
+                alt={props.name}
                 className={styles.productDetailsImage}
+                width={350}
+                height={350}
               />
             </div>
             <div className="d-md-flex justify-content-md-between flex-md-row flex-lg-column">
-              <h1 className={styles.productDetailsName}>
-                Computador Intel Core i7 2.4Ghz
-              </h1>
-              <ProductPrice price="4799,90" />
+              <h1 className={styles.productDetailsName}>{props.name}</h1>
+              <ProductPrice price={String(props.price)} />
             </div>
           </div>
           <div className={`col-xl-6 ${styles.productDetailsCard}`}>
             <h1 className={styles.productDescriptionTitle}>
               Descrição do Produto
             </h1>
-            <p className={styles.productDescriptionText}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus
-              odio illo cum incidunt ipsam provident eveniet nulla ullam,
-              consectetur fuga eligendi hic enim veniam earum facere, labore
-              nesciunt aliquid optio nam accusantium iure! Sapiente magnam,
-              minima explicabo doloribus dolorum exercitationem cupiditate
-              aspernatur tempora iusto numquam sit recusandae nulla nam! Magnam.
-            </p>
+            <p className={styles.productDescriptionText}>{props.description}</p>
           </div>
         </div>
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { id } = ctx.query;
+  const res = await api.get(`/products/${id}`);
+  const product = res.data;
+
+  return {
+    props: {
+      product,
+    },
+  };
 }

@@ -3,21 +3,25 @@ import Link from "next/link";
 import styles from "./productitem.module.css";
 import productImg from "../../../public/product.png";
 import ProductPrice from "../ProductPrice";
+import { Product } from "../../@types";
 
-export default function ProductItem() {
+export default function ProductItem(product: Product) {
+  const { imgUrl, name, price, id } = product;
   return (
-    <Link href="/catalog/product/a1ds1fasd5f6a">
+    <Link href={`/catalog/product/${id}`}>
       <a className={`card-base border-radius-10 ${styles.productCard}`}>
         <div className={styles.cardTopContainer}>
           <Image
-            src={productImg}
-            alt="Nome do produto"
+            src={imgUrl}
+            alt={name}
             className={styles.productCardImage}
+            width={197}
+            height={158}
           />
         </div>
         <div className={styles.cardBottomContainer}>
-          <h6>Nome do Produto</h6>
-          <ProductPrice price="1999,90" />
+          <h6>{name}</h6>
+          <ProductPrice price={String(price)} />
         </div>
       </a>
     </Link>

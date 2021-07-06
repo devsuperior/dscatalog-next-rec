@@ -6,6 +6,7 @@
 .cardTopContainer {
   padding: 16px;
   border-bottom: 1px solid #e1e1e1;
+  max-height: 180px;
 }
 
 .cardBottomContainer {

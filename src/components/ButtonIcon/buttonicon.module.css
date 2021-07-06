@@ -1,5 +1,5 @@
 .btnContainer {
-  width: 220px;
+  width: 100%;
 }
 
 .btnIcon {
@@ -30,7 +30,7 @@
     width: 380px;
   }
   .btnIcon {
-    width: 20rem;
+    width: 100%;
     height: 70px;
   }
   .btnIcon h5 {
@@ -38,11 +38,5 @@
   }
   .btnIconContent {
     width: 70px;
-  }
-}
-
-@media (min-width: 992px) {
-  .btnIcon {
-    margin-left: -60px;
   }
 }
