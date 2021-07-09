@@ -1,16 +1,17 @@
+import { GetServerSidePropsContext } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ProductPrice } from "../../../components";
 
 import arrow from "../../../../public/blue_arrow.svg";
-import productImg from "../../../../public/product_big.png";
 
-import styles from "../../../styles/pages/product.module.css";
 import { Product } from "../../../@types";
 import { api } from "../../../utils/api";
-import { GetServerSidePropsContext } from "next";
 
-export default function ProductDetails(props: Product) {
+import styles from "../../../styles/pages/product.module.css";
+
+export default function ProductDetails({ productDetails }: Product) {
+  const { imgUrl, name, price, description } = productDetails;
   return (
     <div className={styles.productDetailsContainer}>
       <div
@@ -28,23 +29,23 @@ export default function ProductDetails(props: Product) {
               className={`text-center ${styles.productDetailsCard} ${styles.imgContainer}`}
             >
               <Image
-                src={props.imgUrl}
-                alt={props.name}
+                src={imgUrl}
+                alt={name}
                 className={styles.productDetailsImage}
                 width={350}
                 height={350}
               />
             </div>
             <div className="d-md-flex justify-content-md-between flex-md-row flex-lg-column">
-              <h1 className={styles.productDetailsName}>{props.name}</h1>
-              <ProductPrice price={String(props.price)} />
+              <h1 className={styles.productDetailsName}>{name}</h1>
+              <ProductPrice price={String(price)} />
             </div>
           </div>
           <div className={`col-xl-6 ${styles.productDetailsCard}`}>
             <h1 className={styles.productDescriptionTitle}>
               Descrição do Produto
             </h1>
-            <p className={styles.productDescriptionText}>{props.description}</p>
+            <p className={styles.productDescriptionText}>{description}</p>
           </div>
         </div>
       </div>
@@ -53,13 +54,13 @@ export default function ProductDetails(props: Product) {
 }
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const { id } = ctx.query;
+  const { product: id } = ctx.query;
   const res = await api.get(`/products/${id}`);
-  const product = res.data;
+  const productDetails = res.data;
 
   return {
     props: {
-      product,
+      productDetails,
     },
   };
 }

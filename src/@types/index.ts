@@ -22,13 +22,15 @@ export type ProductsResponse = {
 };
 
 export type Product = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  imgUrl: string;
-  date: string;
-  categories: Category[];
+  productDetails: {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    imgUrl: string;
+    date: string;
+    categories: Category[];
+  };
 };
 
 export type LoginResponse = {
