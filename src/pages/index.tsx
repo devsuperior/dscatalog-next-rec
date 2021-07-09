@@ -23,7 +23,7 @@ export default function Home() {
           </p>
           <Link href="/catalog">
             <a>
-              <ButtonIcon label="inicie agora a sua busca" />
+              <ButtonIcon label="inicie agora a sua busca" type="button" />
             </a>
           </Link>
         </div>

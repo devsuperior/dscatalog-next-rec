@@ -18,7 +18,7 @@ export type Category = {
 };
 
 export type ProductsResponse = {
-  products: Product[];
+  products: ProductItemProps[];
 };
 
 export type Product = {
@@ -31,6 +31,16 @@ export type Product = {
     date: string;
     categories: Category[];
   };
+};
+
+export type ProductItemProps = {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  imgUrl: string;
+  date: string;
+  categories: Category[];
 };
 
 export type LoginResponse = {

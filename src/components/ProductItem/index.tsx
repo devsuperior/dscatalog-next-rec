@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./productitem.module.css";
-import productImg from "../../../public/product.png";
 import ProductPrice from "../ProductPrice";
-import { Product } from "../../@types";
+import { ProductItemProps } from "../../@types";
 
-export default function ProductItem(product: Product) {
+export default function ProductItem(product: ProductItemProps) {
   const { imgUrl, name, price, id } = product;
   return (
     <Link href={`/catalog/product/${id}`}>
