@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import { ButtonIcon } from "../../../components";
-import { loginUser } from "../../../utils/auth";
+import { isAuthenticated, loginUser } from "../../../utils/auth";
 
 import imageBackground from "../../../../public/auth_image.png";
 import styles from "../../../styles/pages/auth.module.css";
+import { useEffect, useState } from "react";
 
 type AuthProps = {
   username: string;
@@ -13,6 +15,8 @@ type AuthProps = {
 };
 
 export default function Login() {
+  const [logged, setLogged] = useState(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -21,8 +25,17 @@ export default function Login() {
 
   const onSubmit = async (data: AuthProps) => {
     const { username, password } = data;
-    loginUser(username, password);
+    await loginUser(username, password);
+
+    const test = isAuthenticated();
+    console.log(test);
   };
+
+  //   useEffect(() => {
+  //     if (localStorage.getItem("@dscatalog/token")) {
+  //       console.log("ok estou logado");
+  //     }
+  //   }, [isAuthenticated]);
 
   return (
     <div className={styles.authContainer}>

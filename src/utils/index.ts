@@ -9,3 +9,14 @@ export function returnSelect(route: string) {
 
   return result;
 }
+
+export function returnActiveItem(route: string) {
+  const router = useRouter();
+  const { asPath } = router;
+  let result;
+  if (asPath === route) result = "active-sidebar-item";
+
+  return result;
+}
+
+export const isBrowser = () => typeof window !== "undefined";

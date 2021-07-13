@@ -24,8 +24,14 @@ a {
   text-decoration: none;
 }
 
+/* active items */
 .active {
   color: #ffffff !important;
+}
+
+.active-sidebar-item {
+  background: rgba(64, 123, 255, 0.3) !important;
+  color: #407bff !important;
 }
 
 .card-base {

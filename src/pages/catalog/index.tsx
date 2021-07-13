@@ -17,7 +17,12 @@ export default function ProductsPage({ products }: ProductsResponse) {
 }
 
 export async function getServerSideProps() {
-  const res = await api.get("/products?page=0&size=12&sort=name,asc");
+  const params = {
+    page: 0,
+    size: 12,
+    sort: "name,asc",
+  };
+  const res = await api({ url: "/products", params });
   const products = res.data.content;
 
   return {
@@ -26,5 +31,3 @@ export async function getServerSideProps() {
     },
   };
 }
-
-/products?page=0&size=12&sort=name,asc
